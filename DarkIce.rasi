@@ -21,8 +21,8 @@
     
     lightfg:                     @foreground;    
         
-    background:                  #323232;
-    selected-normal-background:  #242424;
+    background:                  #303030;
+    selected-normal-background:  #202020;
     
     normal-background:           @background;
     alternate-normal-background: @background;
