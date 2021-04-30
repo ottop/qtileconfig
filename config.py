@@ -45,16 +45,16 @@ keys = [
     Key([mod, "control"], "j", lazy.layout.shuffle_up()),
 
     # Switch window focus to other pane(s) of stack
-    Key([mod], "space", lazy.layout.next()),
+    #Key([mod], "space", lazy.layout.next()),
 
     # Swap panes of split stack
-    Key([mod, "shift"], "space", lazy.layout.rotate()),
+    #Key([mod, "shift"], "space", lazy.layout.rotate()),
 
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
-    Key([mod, "shift"], "Return", lazy.layout.toggle_split()),
+    #Key([mod, "shift"], "Return", lazy.layout.toggle_split()),
     Key([mod],"Return", lazy.spawn("xterm")),
 
     # Toggle between different layouts as defined below
@@ -109,7 +109,8 @@ widget_defaults = dict(
     font='mono',
     fontsize=12,
     padding=3,
-    foreground="c0c0c0"
+    foreground="c0c0c0",
+    background="292929"
 )
 extension_defaults = widget_defaults.copy()
 
@@ -117,17 +118,18 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.GroupBox(borderwidth=8,background="323232",inactive="ffffff",margin_x=0,rounded=False,highlight_method="block",this_current_screen_border="242424"),
-                widget.TaskList(background="323232",border="242424",max_title_width=200,rounded=False,margin_y=0,margin_x=0,margin=0,icon_size=9,highlight_method="block"),
-                widget.Clipboard(background="323232"),
-                widget.CPUGraph(background="323232",width=20,graph_color="58c928",border_width=0,margin_x=2.5),
-                widget.MemoryGraph(background="323232",width=20,graph_color="b9c928",border_width=0,margin_x=2.5),
-                widget.HDDBusyGraph(background="323232",width=20,graph_color="c99928",border_width=0,margin_x=2.5),
-                widget.NetGraph(background="323232",width=20,graph_color="c94328",border_width=0,margin_x=2.5),
-                widget.Spacer(length=2,background="323232"),
-                widget.Sep(background="323232",foreground="666666",padding=5),
-                widget.Clock(format='%m.%d.%Y - %H:%M',background="323232",),
-                widget.Spacer(length=2,background="323232"),
+                widget.GroupBox(borderwidth=8,inactive="c0c0c0",active="c0c0c0",margin_x=0,rounded=False,highlight_method="block",this_current_screen_border="191919"),
+                widget.TaskList(border="191919",max_title_width=200,rounded=False,margin_y=0,margin_x=0,margin=0,icon_size=9,highlight_method="block"),
+                widget.Clipboard(),
+                widget.CPUGraph(width=20,graph_color="58c928",border_width=0,margin_x=2.5),
+                widget.MemoryGraph(width=20,graph_color="b9c928",border_width=0,margin_x=2.5),
+                widget.HDDBusyGraph(width=20,graph_color="c99928",border_width=0,margin_x=2.5),
+                widget.NetGraph(width=20,graph_color="c94328",border_width=0,margin_x=2.5),
+                widget.Spacer(length=2),
+                widget.ThermalSensor(foreground="c0c0c0",tag_sensor="Package id 0"),
+                widget.Sep(foreground="666666",padding=5),
+                widget.Clock(format='%m.%d.%Y - %H:%M'),
+                widget.Spacer(length=2),
             ],
             18,
         ),
@@ -140,7 +142,7 @@ mouse = [
          start=lazy.window.get_position()),
     Drag([mod], "Button3", lazy.window.set_size_floating(),
          start=lazy.window.get_size()),
-    Click([mod], "Button2", lazy.window.bring_to_front())
+    #Click([mod], "Button2", lazy.window.bring_to_front())
 ]
 
 dgroups_key_binder = None
